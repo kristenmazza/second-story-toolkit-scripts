@@ -40,6 +40,11 @@ number() {
   echo "$output"
 }
 
+border() {
+  filename=$1
+  convert "$filename" -bordercolor '#FFFFFF' -border 20 -bordercolor '#000000' -border 10 "$filename"
+}
+
 # generate stamp file
 stamp
 
@@ -51,4 +56,5 @@ while IFS= read -r line; do
   # file "$line"
   output=$(number "$line" "$counter")
   watermark "$output"
+  border "$output"
 done <$IMAGES

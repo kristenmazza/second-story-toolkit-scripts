@@ -35,7 +35,8 @@ number() {
   filename=$1
   number=$2
   output="$OUTPUT"/"$number".jpeg
-  convert "$filename" -resize 3400x2550 -gravity SouthWest -pointsize 100 -fill black -font "Roboto-Bold" -annotate +40+30 "$number" "$output"
+  convert "$filename" -resize 3400x2550 -font "Roboto-Bold" -pointsize 100 -gravity SouthWest \
+      -fill black -annotate +40+30 "$number" "$output"
   echo "$output"
 }
 

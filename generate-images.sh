@@ -31,25 +31,39 @@ resize() {
   filename=$1
   number=$2
   output="$OUTPUT"/"$number".jpeg
-  convert "$filename" -resize "$SIZE" "$output"
+  convert "$filename" \
+      -resize "$SIZE" \
+    "$output"
   echo "$output"
 }
 
 watermark() {
   filename=$1
-  composite -gravity southeast -geometry +40+30 stamp/stamp.png  "$filename" "$filename"
+  composite \
+      -gravity southeast \
+      -geometry +40+30 stamp/stamp.png "$filename" \
+    "$filename"
 }
 
 number() {
   filename=$1
   number=$2
-  convert "$filename" -font "Roboto-Bold" -pointsize 100 -gravity SouthWest \
-      -fill black -annotate +40+30 "$number" "$output"
+  convert "$filename" \
+      -font "Roboto-Bold" \
+      -pointsize 100 \
+      -gravity SouthWest \
+      -fill black -annotate +40+30 "$number" \
+    "$filename"
 }
 
 border() {
   filename=$1
-  convert "$filename" -bordercolor '#FFFFFF' -border 20 -bordercolor '#000000' -border 10 "$filename"
+  convert "$filename" \
+      -bordercolor '#FFFFFF' \
+      -border 20 \
+      -bordercolor '#000000' \
+      -border 10 \
+    "$filename"
 }
 
 # generate stamp file
